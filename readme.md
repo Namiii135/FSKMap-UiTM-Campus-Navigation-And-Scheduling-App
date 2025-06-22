@@ -35,6 +35,7 @@
 - 🔲 **Password Hashing** (SHA-256 or bcrypt)
 - 🔲 **Session Management**
 - 🔲 **User Roles & Permissions**
+![API TESTING](screenshot/stupidapi.png)
 
 ---
 
