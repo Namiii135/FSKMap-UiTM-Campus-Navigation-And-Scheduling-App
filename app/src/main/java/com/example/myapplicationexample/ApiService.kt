@@ -13,6 +13,13 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
+    @FormUrlEncoded
+    @POST("register.php")
+    fun register(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Call<RegisterResponse>
 
     @FormUrlEncoded
     @POST("add_schedule.php")

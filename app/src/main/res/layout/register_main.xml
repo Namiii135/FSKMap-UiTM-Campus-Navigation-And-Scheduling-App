@@ -68,39 +68,6 @@
                 android:inputType="textPersonName"
                 android:layout_marginBottom="12dp" />
 
-            <!-- Age -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Age"
-                android:textSize="14sp"
-                android:textColor="#333333" />
-
-            <EditText
-                android:id="@+id/ageEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Your Age"
-                android:inputType="number"
-                android:layout_marginBottom="12dp" />
-
-            <!-- Address -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:textSize="14sp"
-                android:textColor="#333333" />
-
-            <EditText
-                android:id="@+id/addressEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Your Address"
-                android:inputType="textPostalAddress"
-                android:layout_marginBottom="12dp" />
-
-            <!-- Email -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

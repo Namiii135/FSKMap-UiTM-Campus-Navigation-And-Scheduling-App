@@ -74,14 +74,15 @@
         <!-- Now these markers will be draggable in the visual editor -->
 
         <!-- Zoom Controls -->
-        <ImageView
+
+        <com.github.panpf.zoomimage.SketchZoomImageView
             android:id="@+id/iv_map_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/map"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/marker_building_1"
@@ -110,10 +111,10 @@
             android:src="@drawable/biolab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.527"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/marker_building_4"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.624" />
+            app:layout_constraintVertical_bias="0.355" />
 
         <ImageView
             android:id="@+id/marker_building_3"
@@ -142,10 +143,10 @@
             android:src="@drawable/biolab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.527"
+            app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.706" />
+            app:layout_constraintVertical_bias="0.542" />
 
         <LinearLayout
             android:id="@+id/zoom_controls"
