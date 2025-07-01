@@ -1,54 +1,73 @@
 package com.example.myapplicationexample
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.Toast
-import android.content.Intent
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.login_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        RetrofitClient.instance.login("imran@uitm.edu.my", "test123")
-            .enqueue(object : retrofit2.Callback<LoginResponse> {
-                override fun onResponse(call: retrofit2.Call<LoginResponse>, response: retrofit2.Response<LoginResponse>) {
-                    if (response.isSuccessful && response.body()?.status == "success") {
-                        val name = response.body()?.name
-                          Toast.makeText(this@MainActivity, "Welcome SIGMA $name", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this@MainActivity, "Login failed", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
-                override fun onFailure(call: retrofit2.Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
-        val loginButtonTextView = findViewById<TextView>(R.id.loginButton)
-        loginButtonTextView.setOnClickListener {
-            val intent = Intent(this, MainPageActivity::class.java)
-            startActivity(intent)
+        val emailEditText = findViewById<EditText>(R.id.emailEditText)
+        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
+        val loginButton = findViewById<TextView>(R.id.loginButton)
+        val registerNow = findViewById<TextView>(R.id.registerNow)
+
+        loginButton.setOnClickListener {
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill in both email and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            RetrofitClient.instance.login(email, password)
+                .enqueue(object : Callback<LoginResponse> {
+                    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                        val body = response.body()
+                        if (response.isSuccessful && body?.status == "success") {
+                            Toast.makeText(this@MainActivity, "Welcome SIGMA ${body.name}", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@MainActivity, MainPageActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            when (body?.reason) {
+                                "wrong_password" -> Toast.makeText(this@MainActivity, "Incorrect password", Toast.LENGTH_SHORT).show()
+                                "no_user" -> Toast.makeText(this@MainActivity, "User not found", Toast.LENGTH_SHORT).show()
+                                "empty_field" -> Toast.makeText(this@MainActivity, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                                else -> Toast.makeText(this@MainActivity, "Login failed", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        Toast.makeText(this@MainActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
-        val registerNowTextView = findViewById<TextView>(R.id.registerNow)
-        registerNowTextView.setOnClickListener {
+
+        registerNow.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
     }
-
-
 }

@@ -7,7 +7,7 @@ object RetrofitClient {
 
     // Use 10.0.2.2 if you're using Android Emulator
     // Use your IP (e.g., 192.168.x.x) if on real Android device
-    private const val BASE_URL = "http://10.82.194.37/fskmapi/"
+    private const val BASE_URL = "http://10.82.192.211/fskmapi/"
 
     val instance: ApiService by lazy {
         val retrofit = Retrofit.Builder()
