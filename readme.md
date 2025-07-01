@@ -68,3 +68,12 @@
 - [ ] Build UI in Android Studio from Figma
 - [ ] Implement login logic (Retrofit + PHP + MySQL)
 - [ ] Store and retrieve schedule data via API
+
+
+ ## ✍️ rEMINDER for navigation
+ 
+ val registerNow = findViewById<TextView>(R.id.registerNow)
+registerNow.setOnClickListener {
+    val intent = Intent(this, RegisterActivity::class.java)
+    startActivity(intent)
+}
