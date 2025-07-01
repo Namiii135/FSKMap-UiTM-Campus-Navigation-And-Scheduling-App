@@ -192,3 +192,37 @@ registerNow.setOnClickListener {
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+# BASIC STRUCTURE KOTLIN ANDROID STUDIO
+
+---
+
+## 📁 res/layout (XML Files)
+- Stores all the **UI layouts** of the app (buttons, text, views).
+- Each screen uses its own `.xml` file.
+- Example: `activity_main.xml`, `login_screen.xml`
+
+## 🖼 res/drawable (Images & Assets)
+- Contains **custom pictures** like logos, icons, backgrounds.
+- These are used inside XML files via `@drawable/filename`.
+
+## ⚙️ Kotlin Files (`.kt`)
+- Used for writing **functional code** (button clicks, API calls, navigation).
+- Example: `MainActivity.kt`, `LoginActivity.kt`
+
+## 📄 AndroidManifest.xml
+- This file **registers activities**, sets permissions (e.g. `INTERNET`), and defines the app's main entry point.
+- It connects all parts of the app together.
+
+---
+
+## 🔗 How It All Connects
+1. XML layouts define what the user sees.
+2. Drawable images are used inside XML files.
+3. Kotlin code adds behavior to the layouts.
+4. AndroidManifest.xml ties it all together.
+
+---
+
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
