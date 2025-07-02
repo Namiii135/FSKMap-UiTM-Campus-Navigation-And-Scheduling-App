@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
                         val body = response.body()
                         if (response.isSuccessful && body?.status == "success") {
                             Toast.makeText(this@RegisterActivity, "Register successful! You can now login.", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                             finish()
                         } else {
                             when (body?.reason) {
@@ -54,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         LoginNow.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

@@ -50,5 +50,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("io.github.panpf.zoomimage:zoomimage-view-sketch4:1.4.0-beta02")
+    implementation ("com.davemorrissey.labs:subsampling-scale-image-view:3.10.0")
+
 
 }

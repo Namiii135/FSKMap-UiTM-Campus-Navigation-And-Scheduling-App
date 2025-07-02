@@ -78,9 +78,10 @@
  1)go to any github source to find ur preference 
     
  2)add this to dependency {} in build.gradle.kts(module app)
-   implementation("io.github.panpf.zoomimage:zoomimage-view-sketch4:1.4.0-beta02")
+
+implementation ("com.davemorrissey.labs:subsampling-scale-image-view:3.10.0")
  
- 3) add  mavenCentral() in settings.graddle.kts (add google and JitPack also so u dont need to touch anything in this file) this is like the "host"
+ 3) add  mavenCentral() in settings.graddle.kts (add google and JitPack also so u dont need to touch anything in this file ever again when u wanna add another dependency) this is like the "host" or idk
  4) sync now
  
  5) check ur version dependency in libs.versions.toml

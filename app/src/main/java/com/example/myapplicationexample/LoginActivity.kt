@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,22 +45,22 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         val body = response.body()
                         if (response.isSuccessful && body?.status == "success") {
-                            Toast.makeText(this@MainActivity, "Welcome SIGMA ${body.name}", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@MainActivity, MainPageActivity::class.java)
+                            Toast.makeText(this@LoginActivity, "Welcome SIGMA ${body.name}", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@LoginActivity, MainPageActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
                             when (body?.reason) {
-                                "wrong_password" -> Toast.makeText(this@MainActivity, "Incorrect password", Toast.LENGTH_SHORT).show()
-                                "no_user" -> Toast.makeText(this@MainActivity, "User not found", Toast.LENGTH_SHORT).show()
-                                "empty_field" -> Toast.makeText(this@MainActivity, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
-                                else -> Toast.makeText(this@MainActivity, "Login failed", Toast.LENGTH_SHORT).show()
+                                "wrong_password" -> Toast.makeText(this@LoginActivity, "Incorrect password", Toast.LENGTH_SHORT).show()
+                                "no_user" -> Toast.makeText(this@LoginActivity, "User not found", Toast.LENGTH_SHORT).show()
+                                "empty_field" -> Toast.makeText(this@LoginActivity, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                                else -> Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(this@MainActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                     }
                 })
         }
